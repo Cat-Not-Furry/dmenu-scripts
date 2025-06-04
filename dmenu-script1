@@ -108,21 +108,43 @@ show_fondo() {
 
 }
 
+show_widtgets() {
+  selected=$(echo -e "󰥔 Reloj\n Reloj2\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#0d9200" -sf "#000000" -p " ")
+  case "$selected" in
+  "󰥔 Reloj")
+    reloj
+  ;;
+  " Reloj2")
+    reloj2
+  ;; 
+  " Volver")
+    show_tools
+  ;;
+  *)
+    exit 1
+  ;;
+  esac
+
+}
+
 show_tools() {
-  selected=$(echo -e " TaskManager\n󱄡 Audio-control\n DWMBAR\n󰹫 Pantalla\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "Utilidades")
+  selected=$(echo -e " TaskManager\n󰜬 Widtgets\n󰹫 Pantallas\n󱄡 Audio-control\n DWMBAR\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "Utilidades")
 
   case "$selected" in
   " TaskManager")
     xfce4-taskmanager
+    ;;
+  "󰜬 Widtgets")
+    show_widtgets
+    ;;
+  "󰹫 Pantallas")
+    show_fondo
     ;;
   "󱄡 Audio-control")
     pavucontrol
     ;;
   " DWMBAR")
     initdwm
-    ;;
-  "󰹫 Pantalla")
-    show_fondo
     ;;
   " Volver")
     dmenu-script1
@@ -167,9 +189,12 @@ show_office() {
 }
 
 show_notes() {
-  selected=$(echo -e " Geany\n󰂺 Office\n󱓧 Obsidian\n󰎞 Mousepad\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "Editores de texto")
+  selected=$(echo -e " LibreSprite\n Geany\n󰂺 Office\n󱓧 Obsidian\n󰎞 Mousepad\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "Editores de texto")
 
   case "$selected" in
+  " LibreSprite")
+    libresprite
+    ;;
   " Geany")
     geany
     ;;
