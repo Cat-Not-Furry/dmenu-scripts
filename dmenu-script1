@@ -7,15 +7,15 @@ show_2k() {
 
   case "$selected" in
   "Normal")
-    notify-send -t 1000 -i "$HOME/.icons/notifations/kof2002-image.jpg" "The King of Figthers 2002" "Ejecutando...\nBOOTLEG EDITION"
+    notify-send -t 1000 -i "$HOME/.icons/kof2002-image.jpg" "The King of Figthers 2002" "Ejecutando...\nBOOTLEG EDITION"
     mame kof2002
     ;;
   "Plus")
-    notify-send -t 1000 -i "$HOME/.icons/notifations/kof2002-image.jpg" "The King of Figthers 2002" "Ejecutando...\nPLUCERDA EDITION"
+    notify-send -t 1000 -i "$HOME/.icons/kof2002-image.jpg" "The King of Figthers 2002" "Ejecutando...\nPLUCERDA EDITION"
     mame kf2k2pls
     ;;
   "Magic Plus")
-    notify-send -t 1000 -i "$HOME/.icons/notifations/kof2002-image.jpg" "The King of Figthers 2002" "Ejecutando...\nLA MAGICA PLUCERDA EDITION"
+    notify-send -t 1000 -i "$HOME/.icons/kof2002-image.jpg" "The King of Figthers 2002" "Ejecutando...\nLA MAGICA PLUCERDA EDITION"
     mame kf2k2mp2
     ;;
   " Volver")
@@ -33,11 +33,11 @@ show_kof() {
 
   case "$selected" in
   "KOF98")
-    notify-send -t 1000 -i "$HOME/.icons/notifations/kof98-image.jpg" "The King of Figthers 1998" "EJECUTANDO........"
+    notify-send -t 1000 -i "$HOME/.icons/kof98-image.jpg" "The King of Figthers 1998" "EJECUTANDO........"
     mame kof98
     ;;
   "KOF2000")
-    notify-send -t 1000 -i "$HOME/.icons/notifations/kof2000-image.jpg" "The King of Figthers 2000" "EJECUTANDO........"
+    notify-send -t 1000 -i "$HOME/.icons/kof2000-image.jpg" "The King of Figthers 2000" "EJECUTANDO........"
     mame kof2000
     ;;
   "KOF2002")
@@ -54,24 +54,24 @@ show_kof() {
 }
 
 show_games() {
-  selected=$(echo -e " KOF\n \n Garou\n󰬎󰬡󰬋󰬖󰬖󰬔\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#000000" -p "Seleccione el juego")
+  selected=$(echo -e " KOF\n \n Garou\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#000000" -p "Seleccione el juego") #\n󰬎󰬡󰬋󰬖󰬖󰬔
 
   case "$selected" in
   " KOF")
     show_kof
     ;;
   " ")
-    notify-send -t 1000 -i "$HOME/.icons/notifations/mslug-image.jpg" "Metal Slug" "EJECUTANDO......."
+    notify-send -t 1000 -i "$HOME/.icons/mslug-image.jpg" "Metal Slug" "EJECUTANDO......."
     mame mslug
     ;;
   " Garou")
-    notify-send -t 1000 -i "$HOME/.icons/notifations/garoup-image.jpg" "Garou Mark of the Wolfs" "EJECUTANDO........"
+    notify-send -t 1000 -i "$HOME/.icons/garou-image.jpg" "Garou Mark of the Wolfs" "EJECUTANDO........"
     mame garou
     ;;
-  "󰬎󰬡󰬋󰬖󰬖󰬔")
-    notify-send -t 2000 -i "$HOME/.icons/notifations/gzdoom-image.jpg" "GZDOOM" "EJECUTANDO......."
-    gzdoom
-    ;;
+#  "󰬎󰬡󰬋󰬖󰬖󰬔")
+#    notify-send -t 2000 -i "$HOME/.icons/gzdoom-image.jpg" "GZDOOM" "EJECUTANDO......."
+#    gzdoom
+#    ;;
   " Volver")
     dmenu-script1
     ;;
@@ -83,7 +83,7 @@ show_games() {
 }
 
 show_fondo() {
-  selected=$(echo -e " Fondo\n󰂶 Picom\n 󰂶 Ambos\n󰂷 Quitar Picom\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#0d9200" -sf "#000000" -p "¿Que composicion?")
+  selected=$(echo -e " Fondo\n󰂶 Picom\n 󰂶 Ambos\n󰂷 Quitar Picom\n󰹑 Monitores\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#0d9200" -sf "#000000" -p "¿Que composicion?")
 
   case "$selected" in
   " Fondo")
@@ -98,6 +98,8 @@ show_fondo() {
   "󰂷 Quitar Picom")
     fondo k
     ;;
+  "󰹑 Monitores")
+    ;;
   " Volver")
     show_tools
     ;;
@@ -108,44 +110,43 @@ show_fondo() {
 
 }
 
-show_widtgets() {
-  selected=$(echo -e "󰥔 Reloj\n Reloj2\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#0d9200" -sf "#000000" -p " ")
-  case "$selected" in
-  "󰥔 Reloj")
-    reloj
-  ;;
-  " Reloj2")
-    reloj2
-  ;; 
-  " Volver")
-    show_tools
-  ;;
-  *)
-    exit 1
-  ;;
-  esac
-
-}
+#show_widtgets() {
+#  selected=$(echo -e "󰥔 Reloj\n Reloj2\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#0d9200" -sf "#000000" -p " ")
+#  case "$selected" in
+#  "󰥔 Reloj")
+#    reloj
+#  ;;
+#  " Reloj2")
+#    reloj2
+#  ;; 
+#  " Volver")
+#    show_tools
+#  ;;
+#  *)
+#    exit 1
+#  ;;
+#  esac
+#}
 
 show_tools() {
-  selected=$(echo -e " TaskManager\n󰜬 Widtgets\n󰹫 Pantallas\n󱄡 Audio-control\n DWMBAR\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "Utilidades")
+  selected=$(echo -e " TaskManager\n󰹫 Pantallas\n󱄡 Audio-control\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "Utilidades") #\n DWMBAR
 
   case "$selected" in
   " TaskManager")
-    xfce4-taskmanager
+    plasma-systemmonitor
     ;;
-  "󰜬 Widtgets")
-    show_widtgets
-    ;;
+#  "󰜬 Widtgets")
+#    show_widtgets
+#    ;;
   "󰹫 Pantallas")
     show_fondo
     ;;
   "󱄡 Audio-control")
     pavucontrol
     ;;
-  " DWMBAR")
-    initdwm
-    ;;
+#  " DWMBAR")
+#    initdwm
+#    ;;
   " Volver")
     dmenu-script1
     ;;
@@ -157,7 +158,7 @@ show_tools() {
 }
 
 show_office() {
-  selected=$(echo -e "󰎞 Texto\n Calculo\n󰛺 Presentaciones\n󰯁 Dibujo\n󰨣 Base de datos\n󰿉 Formulas\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "¿Que hoja deseas utilzar?")
+  selected=$(echo -e "󰎞 Texto\n Calculo\n󰛺 Presentaciones\n󰯁 Dibujo\n󰨣 Base de datos\n󰿉 Formulas\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "¿Que hoja deseas utilzar?") #󰜬 Widtgets
 
   case "$selected" in
   "󰎞 Texto")
@@ -189,9 +190,12 @@ show_office() {
 }
 
 show_notes() {
-  selected=$(echo -e " LibreSprite\n Geany\n󰂺 Office\n󱓧 Obsidian\n󰎞 Mousepad\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "Editores de texto")
+  selected=$(echo -e " Krita\n LibreSprite\n Geany\n󰂺 Office\n󱓧 Obsidian\n󰎞 Mousepad\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0fa600" -sf "#000000" -p "Editores de texto")
 
   case "$selected" in
+  " Krita")
+    krita
+    ;;
   " LibreSprite")
     libresprite
     ;;
@@ -218,11 +222,11 @@ show_notes() {
 }
 
 show_apps() {
-  selected=$(echo -e " Firefox\n󰎞 Editores\n Strawberry\n Thunar\n GitHub\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#000000" -p "$1")
+  selected=$(echo -e " Brave\n󰎞 Editores\n Strawberry\n Thunar\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#000000" -p "$1") #\n GitHub
 
   case $selected in
-  " Firefox")
-    firefox
+  " Brave")
+    brave
     ;;
   "󰎞 Editores")
     show_notes
@@ -236,9 +240,9 @@ show_apps() {
   "󰂺 Office")
     show_office
     ;;
-  " GitHub")
-    github-desktop
-    ;;
+#  " GitHub")
+#    github-desktop
+#    ;;
   " Volver" | "")
     dmenu-script1
     ;;
