@@ -68,10 +68,10 @@ show_games() {
     notify-send -t 1000 -i "$HOME/.icons/garou-image.jpg" "Garou Mark of the Wolfs" "EJECUTANDO........"
     mame garou
     ;;
-#  "󰬎󰬡󰬋󰬖󰬖󰬔")
-#    notify-send -t 2000 -i "$HOME/.icons/gzdoom-image.jpg" "GZDOOM" "EJECUTANDO......."
-#    gzdoom
-#    ;;
+    #  "󰬎󰬡󰬋󰬖󰬖󰬔")
+    #    notify-send -t 2000 -i "$HOME/.icons/gzdoom-image.jpg" "GZDOOM" "EJECUTANDO......."
+    #    gzdoom
+    #    ;;
   " Volver")
     dmenu-script1
     ;;
@@ -82,8 +82,33 @@ show_games() {
 
 }
 
+hyperland() {
+  selected=$(echo -e " Activar\n Desactivar\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#0d9200" -sf "#000000" -p " Hyperland")
+
+  case "$selected" in
+  " Activar")
+    mv ~/.config/i3/config ~/.config/i3/config.bak
+    mv ~/.config/i3/config.hypr ~/.config/i3/config
+    i3-msg restart
+    ;;
+  " Desactivar")
+    mv ~/.config/i3/config ~/.config/i3/config.hypr
+    mv ~/.config/i3/config.bak ~/.config/i3/config
+    killall -q polybar
+    while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+    i3-msg restart
+    ;;
+  " Volver")
+    show_fondo
+    ;;
+  *)
+    exit 1
+    ;;
+  esac
+}
+
 show_fondo() {
-  selected=$(echo -e " Fondo\n󰂶 Picom\n 󰂶 Ambos\n󰂷 Quitar Picom\n󰹑 Monitores\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#0d9200" -sf "#000000" -p "¿Que composicion?")
+  selected=$(echo -e " Fondo\n󰂶 Picom\n 󰂶 Ambos\n󰂷 Quitar Picom\n󰹑 Monitores\n Hyperland\n Volver" | dmenu -i -nf "#8a8a8a" -sb "#0d9200" -sf "#0d9200" -sf "#000000" -p "¿Que composicion?")
 
   case "$selected" in
   " Fondo")
@@ -98,7 +123,9 @@ show_fondo() {
   "󰂷 Quitar Picom")
     fondo k
     ;;
-  "󰹑 Monitores")
+  "󰹑 Monitores") ;;
+  " Hyperland")
+    hyperland
     ;;
   " Volver")
     show_tools
@@ -118,7 +145,7 @@ show_fondo() {
 #  ;;
 #  " Reloj2")
 #    reloj2
-#  ;; 
+#  ;;
 #  " Volver")
 #    show_tools
 #  ;;
@@ -135,18 +162,18 @@ show_tools() {
   " TaskManager")
     plasma-systemmonitor
     ;;
-#  "󰜬 Widtgets")
-#    show_widtgets
-#    ;;
+    #  "󰜬 Widtgets")
+    #    show_widtgets
+    #    ;;
   "󰹫 Pantallas")
     show_fondo
     ;;
   "󱄡 Audio-control")
     pavucontrol
     ;;
-#  " DWMBAR")
-#    initdwm
-#    ;;
+    #  " DWMBAR")
+    #    initdwm
+    #    ;;
   " Volver")
     dmenu-script1
     ;;
@@ -240,9 +267,9 @@ show_apps() {
   "󰂺 Office")
     show_office
     ;;
-#  " GitHub")
-#    github-desktop
-#    ;;
+    #  " GitHub")
+    #    github-desktop
+    #    ;;
   " Volver" | "")
     dmenu-script1
     ;;
