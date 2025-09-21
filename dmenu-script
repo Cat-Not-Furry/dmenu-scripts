@@ -5,7 +5,7 @@ opcion=$(echo -e " Bloquear\n󰁯 Suspender\n󱋑 Hibernar\n󰈆 Salir\n R
 
 case "$opcion" in
     " Bloquear")
-	dm-tool lock & # o el bloqueador de tu preferencia
+	~/.config/i3/lock.sh # o el bloqueador de tu preferencia
 	;;
     "󰈆 Salir")
 	i3-msg exit
